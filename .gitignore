@@ -1,0 +1,8 @@
+# Tyscript Compiler Destination
+dist
+
+# Env
+*.env
+
+# Node modules
+node_modules
