@@ -2,11 +2,15 @@ import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors, { CorsOptions } from "cors";
+import { Server } from "socket.io";
+import http from "http";
 
 dotenv.config();
 
 export const app: Express = express();
 const PORT = process.env.PORT || 3001;
+
+const server = http.createServer(app);
 
 // API Logging
 app.use(morgan('tiny'));
@@ -32,9 +36,20 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-export const server = app.listen(PORT, () => {
+
+server.listen(PORT, () => {
   console.log(`[server]: server started on port ${PORT}`);
 });
+
+// SocketIO
+const io = new Server(server);
+
+const testEndpoint = io.of("/test");
+
+testEndpoint.on("connection", (socket) => {
+  console.log("client connected to /test endpoint");
+});
+
 
 server.on('close', async () => {
 });
