@@ -4,6 +4,6 @@ import { getIdFromPayload } from "../../middleware/jwt.middleware";
 
 const userRouter = Router();
 
-userRouter.get('/info/', getIdFromPayload, userController.getUserInfoById);
+userRouter.get('/info', getIdFromPayload, userController.getUserInfoById);
 
 export default userRouter;

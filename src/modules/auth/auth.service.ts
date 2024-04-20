@@ -31,7 +31,7 @@ async function signup(name: string, email: string, plainPassword: string) {
   const hashedPassword = hashPassword(plainPassword);
   const user = await userService.getUserByEmail(email);
   if (!user) {
-    const id = await userService.createUser({
+    const { id } = await userService.createUser({
       name: name,
       email: email,
       hashedPassword: hashedPassword,
