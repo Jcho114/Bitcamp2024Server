@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors, { CorsOptions } from "cors";
 import { Server } from "socket.io";
 import http from "http";
+import userRouter from "./modules/users/users.router";
 
 dotenv.config();
 
@@ -23,9 +24,11 @@ const corsOptions: CorsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
-app.use('/', (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   return res.status(200).send("Hello World!");
 });
+
+app.use("/users", userRouter);
 
 // Error handling middleware
 // Keep at bottom above server instantiation
