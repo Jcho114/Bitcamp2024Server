@@ -1,31 +1,17 @@
 import { Request, Response } from "express";
 import userService from "./users.service";
 
-async function login(req: Request, res: Response) {
-  const user = req.body;
-  const jwt = await userService.login(user.email, user.password);
-  if (!jwt) {
-    return res.status(403).send("unable to login");
+async function getUserInfoById(req: Request, res: Response) {
+  const id = req.payload?.id;
+  const user = await userService.getUserInfoById(id as string);
+  if (user) {
+    return res.status(200).json(user);
   }
-  return res.status(201).json({
-    accessToken: jwt
-  })
-}
-
-async function signup(req: Request, res: Response) {
-  const user = req.body;
-  const jwt = await userService.signup(user.name, user.email, user.password);
-  if (!jwt) {
-    return res.status(403).send("unable to signup");
-  }
-  return res.status(201).json({
-    accessToken: jwt
-  })
+  return res.status(400).send("unable to find user");
 }
 
 const userController = {
-  login,
-  signup,
+  getUserInfoById,
 }
 
 export default userController;

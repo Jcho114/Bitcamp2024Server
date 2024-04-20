@@ -5,6 +5,7 @@ import cors, { CorsOptions } from "cors";
 import { Server } from "socket.io";
 import http from "http";
 import userRouter from "./modules/users/users.router";
+import authRouter from "./modules/auth/auth.router";
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ const server = http.createServer(app);
 app.use(morgan('tiny'));
 
 // Cors
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:5173'];
 const corsOptions: CorsOptions = {
   origin: allowedOrigins,
 };
@@ -28,6 +29,8 @@ app.get("/", (req: Request, res: Response) => {
   return res.status(200).send("Hello World!");
 });
 
+// Routers
+app.use("/auth", authRouter)
 app.use("/users", userRouter);
 
 // Error handling middleware
