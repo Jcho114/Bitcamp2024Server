@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 
 // Cors
 const corsOptions: CorsOptions = {
-  origin: "https://bitcamp2024client.onrender.com/",
+  origin: "https://bitcamp2024client.onrender.com",
 };
 app.use(express.json());
 app.use(cors(corsOptions));
