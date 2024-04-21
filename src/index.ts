@@ -53,7 +53,7 @@ server.listen(PORT, () => {
 // SocketIO
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: allowedOrigins[0],
     methods: ["GET", "POST"],
   }
 });
