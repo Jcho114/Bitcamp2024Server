@@ -61,7 +61,7 @@ server.listen(PORT, () => {
 // SocketIO
 const io = new Server(server, {
   cors: {
-    origin: "https://bitcamp2024client.onrender.com/",
+    origin: "https://bitcamp2024client.onrender.com",
     methods: ["GET", "POST"],
   }
 });
