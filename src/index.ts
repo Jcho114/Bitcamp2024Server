@@ -15,7 +15,7 @@ export const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
 // Cors
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = [process.env.ORIGIN as string];
 const corsOptions: CorsOptions = {
   origin: allowedOrigins,
 };
