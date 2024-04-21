@@ -15,12 +15,12 @@ export const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
 // Cors
-const allowedOrigins = ["https://bitcamp2024client.onrender.com/"];
 const corsOptions: CorsOptions = {
-  origin: allowedOrigins,
+  origin: "https://bitcamp2024client.onrender.com/",
 };
 app.use(express.json());
 app.use(cors(corsOptions));
+app.options("*", cors());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
