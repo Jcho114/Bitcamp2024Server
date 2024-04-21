@@ -1,1 +1,0 @@
-ALTER TABLE "appointmentrequest" DROP COLUMN IF EXISTS "roomId";

@@ -5,85 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1713580473250,
-      "tag": "0000_square_fat_cobra",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1713643820812,
-      "tag": "0001_workable_wendell_rand",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1713644166753,
-      "tag": "0002_mean_human_cannonball",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1713646057870,
-      "tag": "0003_remarkable_wonder_man",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1713650710554,
-      "tag": "0004_smiling_franklin_richards",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1713651330985,
-      "tag": "0005_funny_lady_mastermind",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1713653765409,
-      "tag": "0006_hesitant_wolfpack",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "5",
-      "when": 1713654402668,
-      "tag": "0007_polite_talisman",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "5",
-      "when": 1713654451541,
-      "tag": "0008_harsh_agent_zero",
-      "breakpoints": true
-    },
-    {
-      "idx": 9,
-      "version": "5",
-      "when": 1713656846626,
-      "tag": "0009_elite_sphinx",
-      "breakpoints": true
-    },
-    {
-      "idx": 10,
-      "version": "5",
-      "when": 1713663612374,
-      "tag": "0010_flashy_cannonball",
-      "breakpoints": true
-    },
-    {
-      "idx": 11,
-      "version": "5",
-      "when": 1713664296072,
-      "tag": "0011_mute_firedrake",
+      "when": 1713675362291,
+      "tag": "0000_clever_doomsday",
       "breakpoints": true
     }
   ]

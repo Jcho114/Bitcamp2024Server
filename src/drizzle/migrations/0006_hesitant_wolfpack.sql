@@ -1,1 +1,0 @@
-ALTER TABLE "appointmentrequest" ADD COLUMN "request" varchar NOT NULL;

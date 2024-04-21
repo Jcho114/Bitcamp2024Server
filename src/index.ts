@@ -7,6 +7,7 @@ import http from "http";
 import userRouter from "./modules/users/users.router";
 import authRouter from "./modules/auth/auth.router";
 import appointmentRouter from "./modules/appointments/appointments.router";
+import threadRouter from "./modules/threads/threads.router";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/auth", authRouter)
 app.use("/users", userRouter);
 app.use("/appointments", appointmentRouter);
+app.use("/threads", threadRouter);
 
 // Error handling middleware
 // Keep at bottom above server instantiation

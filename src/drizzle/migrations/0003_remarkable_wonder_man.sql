@@ -1,1 +1,0 @@
-ALTER TABLE "appointmentrequest" ADD COLUMN "tag" varchar[] NOT NULL;

@@ -1,1 +1,0 @@
-ALTER TABLE "appointmentrequest" ADD COLUMN "roomId" uuid NOT NULL;
