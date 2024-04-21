@@ -10,9 +10,12 @@ async function createThread(thread: CreateThread) {
 }
 
 async function getThreads() {
-  const data = await db.select()
-    .from(ThreadTable)
-    .orderBy(desc(ThreadTable.date));
+  const data = await db.query.ThreadTable.findMany({
+    with: {
+      author: true,
+      rootReplies: true,
+    }
+  });
   return data;
 }
 
