@@ -15,7 +15,7 @@ export const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
 // Cors
-const allowedOrigins = [process.env.ORIGIN as string];
+const allowedOrigins = ["https://peersphereuniv.netlify.app/"];
 const corsOptions: CorsOptions = {
   origin: allowedOrigins,
 };
