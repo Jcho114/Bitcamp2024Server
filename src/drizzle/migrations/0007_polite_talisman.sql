@@ -1,0 +1,1 @@
+ALTER TABLE "appointmentrequest" RENAME COLUMN "tag" TO "tags";

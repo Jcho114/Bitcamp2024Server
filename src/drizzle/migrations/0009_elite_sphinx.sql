@@ -1,0 +1,1 @@
+ALTER TABLE "appointmentrequest" ADD COLUMN "resolved" boolean DEFAULT false NOT NULL;

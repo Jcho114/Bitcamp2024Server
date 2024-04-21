@@ -6,16 +6,12 @@ import { Server } from "socket.io";
 import http from "http";
 import userRouter from "./modules/users/users.router";
 import authRouter from "./modules/auth/auth.router";
+import appointmentRouter from "./modules/appointments/appointments.router";
 
 dotenv.config();
 
 export const app: Express = express();
 const PORT = process.env.PORT || 3001;
-
-const server = http.createServer(app);
-
-// API Logging
-app.use(morgan('tiny'));
 
 // Cors
 const allowedOrigins = ['http://localhost:5173'];
@@ -25,6 +21,11 @@ const corsOptions: CorsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
+const server = http.createServer(app);
+
+// API Logging
+app.use(morgan('tiny'));
+
 app.get("/", (req: Request, res: Response) => {
   return res.status(200).send("Hello World!");
 });
@@ -32,6 +33,7 @@ app.get("/", (req: Request, res: Response) => {
 // Routers
 app.use("/auth", authRouter)
 app.use("/users", userRouter);
+app.use("/appointments", appointmentRouter);
 
 // Error handling middleware
 // Keep at bottom above server instantiation
@@ -42,20 +44,46 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-
 server.listen(PORT, () => {
   console.log(`[server]: server started on port ${PORT}`);
 });
 
 // SocketIO
-const io = new Server(server);
-
-const testEndpoint = io.of("/test");
-
-testEndpoint.on("connection", (socket) => {
-  console.log("client connected to /test endpoint");
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+  }
 });
 
+const teachEndpoint = io.of("/teach");
+
+teachEndpoint.on("connection", (socket) => {
+  socket.emit("me", socket.id);
+
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("callEnded");
+  });
+
+  socket.on("joinRoom", (data) => {
+    console.log("joinRoom", data);
+    socket.join(data[0]);
+  });
+
+  socket.on("callUser", (data) => {
+    console.log("callUser");
+    socket.to(data.roomId).emit("callUser", {signal: data.signal, from: data.from, name: data.name});
+  });
+
+  socket.on("answerCall", (data) => {
+    console.log("answerCall");
+    socket.to(data.roomId).emit("callAccepted", data.signal);
+  });
+
+  socket.on("message", (data) => {
+    socket.to(data.roomId).emit("message", data.name, data.content);
+  });
+});
 
 server.on('close', async () => {
 });
